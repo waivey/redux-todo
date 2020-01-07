@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TaskCard = ({ text, completed }) => {
+const TaskCard = ({ text, completed, onClick }) => {
     return(
-        <h3>{text}</h3>
+    <li style={{textDecoration: completed ? 'line-through' : 'none'}} onClick={onClick}>{text}</li>
     )
 }
 

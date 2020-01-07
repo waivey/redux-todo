@@ -1,19 +1,14 @@
 import React from 'react';
 import TaskCard from './TaskCard';
-// import { connect } from 'react-redux'
 
-const TaskList = ({ tasks }) => {
+
+const TaskList = ({ tasks, toggleTask }) => {
     return(
         <ul>
-            {tasks.map(task => <TaskCard key={task.id} {...task}/>)}
+            {tasks.map(task => <TaskCard key={task.id} {...task} onClick={() => {toggleTask(task.id)}}/>)}
         </ul>
     )
 }
 
-// const mapStateToProps = state => {
-//     return {tasks: state.tasks} 
-// }
-
-// export default connect(mapStateToProps)(TaskList)
 
 export default TaskList
