@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import TaskAdder from './components/TaskAdder';
-import TaskList from './components/TaskList';
+import VisibleTaskList from './components/VisibleTaskList';
 
 function App() {
   return (
     <>
       <TaskAdder />
-      <TaskList />
+      <VisibleTaskList />
     </>
   );
 }

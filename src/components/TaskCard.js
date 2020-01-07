@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TaskCard = () => {
+const TaskCard = ({ text, completed }) => {
     return(
-        <h3>an individual task</h3>
+        <h3>{text}</h3>
     )
 }
 

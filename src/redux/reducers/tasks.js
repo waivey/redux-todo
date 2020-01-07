@@ -1,27 +1,18 @@
-import { ADD_TASK } from '../actionTypes';
+import { ADD_TASK, TOGGLE_TASK } from '../actionTypes';
 
-const initialState = {
-    allIds: [],
-    byIds: {}
-}
-
-export default function(state = initialState, action) {
+const tasks = (state = [], action) => {
     switch (action.type) {
-        case ADD_TASK: {
-                const { id, content } = action.payload;
-                return {
-                    ...state,
-                    allIds: [...state.allIds, id],
-                    byIds: {
-                        ...state.byIds,
-                        [id]: {
-                            content,
-                            completed: false
-                        }
-                    }
-                };
-        }
+        case ADD_TASK:
+            return [
+                ...state,
+                {
+                    id: action.id, text: action.text, completed: false}
+            ]
+        case TOGGLE_TASK:
+            return state.map(task => task.id === action.id ? { ...task, completed: !task.completed } : task);
         default:
-            return state;
+            return state
     }
 }
+
+export default tasks
