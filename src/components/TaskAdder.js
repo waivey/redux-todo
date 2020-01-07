@@ -1,9 +1,21 @@
 import React from 'react';
+import { addTask } from '../redux/actions';
+import { connect } from 'react-redux';
 
-const TaskAdder = () => {
+const TaskAdder = ({ dispatch }) => {
+    let input
+
     return(
-        <h3>Add Task</h3>
+        <form onSubmit={event => {
+            event.preventDefault()
+            if (!input.value.trim()) return;
+            dispatch(addTask(input.value));
+            input.value = '';
+        }}>
+            <input ref={node => (input = node)}/>
+            <button type='submit'>Add Task</button>
+        </form>
     )
 }
 
-export default TaskAdder
+export default connect()(TaskAdder)
